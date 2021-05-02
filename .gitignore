@@ -1,0 +1,6 @@
+# Built Objects and Executables
+*.exe
+*.obj
+
+# JetBrains
+.idea/
