@@ -1,7 +1,7 @@
 # Hello World!
 
-## Compiling
-
+## Assembling HelloWindows
+*nasm and the gcc compiler are required for this example*
 ### Individual Commands
 ```shell
 nasm -f win32 HelloWindows.asm
