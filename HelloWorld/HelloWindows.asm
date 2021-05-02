@@ -10,7 +10,7 @@ section	.text
 _main:                  ; Write our assembly for main
 	push	msg         ; Push our message to the stack
 	call	_printf     ; Call printf for our message
-	add		esp, 4      ; Clear the stack
+	add	esp, 4      ; Clear the stack
 	ret                 ; Return
 
 section	.data
