@@ -1,0 +1,3 @@
+bootloader.bin:
+	@echo Using nasm to assemble bootloader.asm...
+	nasm bootloader.asm -f bin -o bootloader.bin
