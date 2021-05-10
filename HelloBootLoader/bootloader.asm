@@ -17,14 +17,14 @@ print:                                      ; Printing Function
     or  al, al                              ; Check if at end of string
     jz  done                                ; If so, return
     mov ah, 0Eh                             ; Set the function number in AH
-    int 10H                                 ; Call our helpful BIOS to do the rest, we are lazy
+    int 10H                                 ; Call the BIOS
     jmp print                               ; Go back to print the next character
 
 done:
     ret                                     ; return
 
 bootsector:
-        cli                                 ; Disable interupts, prevents halting
+    cli                                     ; Disable interupts, prevents halting
     hlt                                     ; halt
     times 510 - ($-$$) db 0                 ; Create 510 empty bytes
     dw 0xAA55                               ; Append bytes 55 and AA (boot signature)
