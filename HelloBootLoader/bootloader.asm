@@ -8,26 +8,26 @@ bits 16                                     ; Define this program to be in 16 bi
 
 start:
     msg db "Hello, Boot Loader!", 0xA, 0    ; Define Hello, Boot Loader! as bytes and insert a new line
-    mov si, msg                             ; You might want your text to be displayed
+    mov si, msg                             ; Move our text into SI
+    mov ah, 0x0e                            ; Tell video interupt we're going to write chars from AL in tty mode
     call print                              ; Call print to print msg
     jmp bootsector                          ; Jump to the bootsector
 
 print:                                      ; Printing Function
-    lodsb                                   ; Load SI into AL and increment SI for the next character
+    lodsb                                   ; Load SI into AL and increment SI to loop through each character
     or  al, al                              ; Check if at end of string
     jz  done                                ; If so, return
-    mov ah, 0Eh                             ; Set the function number in AH
-    int 10H                                 ; Call the BIOS
+    int 0x10                                ; Call video interrupts
     jmp print                               ; Go back to print the next character
 
 done:
     ret                                     ; return
 
 bootsector:
-    cli                                     ; Disable interupts, prevents halting
-    hlt                                     ; halt
+    cli                                     ; Disable interrupts, prevents halting
     times 510 - ($-$$) db 0                 ; Create 510 empty bytes
     dw 0xAA55                               ; Append bytes 55 and AA (boot signature)
+    hlt                                     ; halt
 
 ; Anatomy of the Boot Sector (512 bytes, 510 empty and 0xAA55 as the last two)
 ; 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
