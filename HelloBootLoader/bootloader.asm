@@ -1,7 +1,5 @@
 ; Hello Boot loader - Extremely simple boot loader written to print text
-; Author: Alexander Sobiek, 2021 - Heavily inspired by Eugene Obrezkov
-; Major credits to https://blog.ghaiklor.com/2017/10/21/how-to-implement-your-own-hello-world-boot-loader/
-; and http://kernelx.weebly.com/writing-a-bootsector.html
+; Author: Alexander Sobiek, 2021
 
 org 0x7C00                                  ; Load our boot loader into this address
 bits 16                                     ; Define this program to be in 16 bit mode
