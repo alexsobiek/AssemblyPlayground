@@ -17,7 +17,7 @@ print:                                      ; Printing Function
     lodsb                                   ; Load SI into AL and increment SI to loop through each character
     or  al, al                              ; Check if at end of string
     jz  done                                ; If so, return
-    int 0x10                                ; Call video interrupts
+    int 0x10                                ; If not, call video interrupt to print character
     jmp print                               ; Go back to print the next character
 
 done:
