@@ -1,3 +1,12 @@
 # Hello Boot Loader
-Extremely simple bootable bootloader that can print text. Currently, this is not working. I will continue to experiment
-until I have way of getting it assembled and bootable!
+Extremely simple bootable bootloader that can print text. 
+
+# Assembling & Booting
+Assembling: 
+```shell
+nasm bootloader.asm -f bin -o bootloader.bin
+```
+Booting with QEMU:
+```shell
+qemu-system-i386 -fda bootloader.bin
+```
